@@ -1,0 +1,26 @@
+version: "3"
+
+services:
+  webapp:
+    container_name: flask_webapp
+    build: ./app
+    command: gunicorn --bind 0.0.0.0:5000 app:app
+    volumes:
+      - ./app:/usr/src/app/
+    networks:
+      - my_network
+    ports:
+      - 5000:5000
+
+  nginx:
+    container_name: nginx_proxy
+    build: ./proxy
+    ports:
+      - 80:80
+    networks:
+      - my_network
+    depends_on:
+      - webapp
+
+networks:
+  my_network:
