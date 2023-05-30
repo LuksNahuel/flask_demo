@@ -9,7 +9,7 @@ ia = IA()
 
 @app.route("/")
 def index():
-    return 'Hello World!'
+    return 'Hello World from AWS (hopefully)!'
 
 @app.post("/complete")
 def complete():
