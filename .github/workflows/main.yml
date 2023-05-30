@@ -21,8 +21,8 @@ jobs:
         run: |
           cd app
           docker login -u $GITHUB_REGISTRY_USER -p $GITHUB_REGISTRY_PASSWORD $GITHUB_REGISTRY
-          docker build --tag $GITHUB_REGISTRY/$GITHUB_REPOSITORY/app:latest .
-          docker push $GITHUB_REGISTRY/$GITHUB_REPOSITORY/app:latest
+          docker build --tag $GITHUB_REPOSITORY/app:latest .
+          docker push $GITHUB_REPOSITORY/app:latest
   proxy-build-image:
     runs-on: ubuntu-latest
     steps:
